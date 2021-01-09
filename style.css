@@ -11,9 +11,9 @@ cursor: pointer;
     margin:5px;
 }
 #usersTable{
- 
+    table-layout: fixed;
     height: 60px;
-    width:  250px;
+    width:  100px;
     border-collapse: collapse;
     border: 2px solid black;
     margin: 5px;

@@ -36,8 +36,11 @@ let col = row.firstElementChild;
 
 function SubRow()
 {
+    let rowL = document.getElementById("usersTable").getElementsByTagName("tr").length;
+    if(rowL > 1){
     row.firstElementChild.remove();
     a = document.getElementsByClassName("t");
+}
 }
 
 function AddColumns()
@@ -75,6 +78,7 @@ function SubColumns()
     let row = document.getElementById("usersTable").firstElementChild;
     let col = row.firstElementChild;
     
+    if(colL > 1){
         for(let i = 0; i < rowL; i++)
         {
             if(i===0){
@@ -89,6 +93,7 @@ function SubColumns()
            
         }
         a = document.getElementsByClassName("t");
+    }
 }
 
 let colour = "";
@@ -96,66 +101,54 @@ $('#colors  li a').on('click', function(){colour = $(this).text();});
 
 a = document.getElementsByClassName("t");
 
-let multi = false;
+
 document.getElementById("usersTable").addEventListener('click',function()
 {
-    
-         for(let i = 0; i<a.length; i++){
+    for(let i = 0; i<a.length; i++){
 
+    a[i].addEventListener("mousemove", function() {
+        if (down) {
+          a[i].style.background = colour
+        }
+      })
+    
+    
          a[i].addEventListener('click', function() {
             a[i].style.background = colour;
         })}
     }
     
 );
-/*table.addEventListener('mouseover', function(event) {
-    let cell = event.target;
-    cell.style.backgroundColor = color;
-    })
-*/
-
-document.getElementById("multi").addEventListener('click', function(){
-    for(let i = 0; i<a.length; i++)
-    a[i].addEventListener('mouseover', function(event) {
-        let cell = event.target;
-        cell.style.backgroundColor = colour;
-        if(cell.classList.contains("NoColor")) {
-            cell.classList.toggle("NoColor");
-        }
-      })
-
-})
-
-
-  
-  
-  
 
 
 
+let down = false;
+$(document).mousedown(function () {
+  down = true;
+}).mouseup(function () {
+  down = false;
+});
 
 
-
-
-
+document.getElementById("clear").addEventListener("click",function(){
+    for(let i = 0; i < a.length; i++){
+        a[i].style.background = "White";}
+});
 
 document.getElementById("fill").addEventListener("click", Fill)
 
+
 function Fill()
 {
-    if(colour == "White"){
+
     for(let i = 0; i < a.length; i++){
-        a[i].style.background = colour;}
-    }
-    else {
-    for(let i = 0; i < a.length; i++){
-        if(a[i].style.background == "" || a[i].style.background == "White" )
+        if(a[i].style.background == "" || a[i].style.background == "white" )
         a[i].style.background = colour;
+        
     }
+ }
 
-    }
 
-}
 
 
 
